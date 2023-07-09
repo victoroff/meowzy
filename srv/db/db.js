@@ -2,26 +2,26 @@ const db = {
     pets: [
         {
             id: 1,
-            name: 'Rex',
-            type: 'dog',
+            name: 'Whiskers',
+            type: 'cat',
             age: 3,
-            breed: 'labrador',
+            breed: 'siamese',
         },
         {
             id: 2,
-            name: 'Fido',
-            type: 'dog',
-            age: 1,
-            breed: 'poodle',
+            name: 'Misty',
+            type: 'cat',
+            age: 2,
+            breed: 'persian',
         },
         {
             id: 3,
-            name: 'Mittens',
+            name: 'Luna',
             type: 'cat',
-            age: 2,
-            breed: 'tabby',
+            age: 1,
+            breed: 'maine coon',
         },
     ]
 }
 
-export default db
+export default db;

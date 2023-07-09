@@ -7,7 +7,7 @@ import petRoutes from './pets/routes/pets.routes.js'
 import swaggerUI from 'swagger-ui-express'
 import swaggerJSdoc from 'swagger-jsdoc'
 
-const url = 'https://localhost';
+const url = 'http://localhost';
 const app = express()
 const port = 6360
 
