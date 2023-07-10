@@ -1,22 +1,20 @@
 import express from 'express'
 import cors from 'cors'
-//routes
-import petRoutes from './pets/routes/pets.routes.js'
 
-///documentation
 import swaggerUI from 'swagger-ui-express'
 import swaggerJSdoc from 'swagger-jsdoc'
+import catRouter from './cats/routes/cats.routes.js'
 
-const url = 'http://localhost';
 const app = express()
 const port = 6360
+const url = 'http://localhost';
 
 // swagger definition
 const swaggerSpec = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Meowzy API',
+            title: 'Cats API',
             version: '1.0.0',
         },
         servers: [
@@ -25,7 +23,7 @@ const swaggerSpec = {
             }
         ]
     },
-    apis: ['./pets/routes/*.js'],
+    apis: ['./cats/routes/*.js'],
 }
 
 /* Global middlewares */
@@ -37,9 +35,8 @@ app.use(
     swaggerUI.setup(swaggerJSdoc(swaggerSpec))
 )
 
-
 /* Routes */
-app.use('/pets', petRoutes)
+app.use('/cats', catRouter)
 
 /* Server setup */
 if (process.env.NODE_ENV !== 'test') {

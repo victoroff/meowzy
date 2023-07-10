@@ -1,26 +1,26 @@
 import supertest from 'supertest' // Import supertest
-import server from '../../server' // Import the server object
+import server from '../../app' // Import the server object
 const requestWithSupertest = supertest(server) // We will use this function to mock HTTP requests
 
 describe('GET "/"', () => {
-    test('GET "/" returns all pets', async () => {
-        const res = await requestWithSupertest.get('/pets')
+    test('GET "/" returns all cats', async () => {
+        const res = await requestWithSupertest.get('/cats')
         expect(res.status).toEqual(200)
         expect(res.type).toEqual(expect.stringContaining('json'))
         expect(res.body).toEqual([
             {
                 id: 1,
-                name: 'Rex',
-                type: 'dog',
+                name: 'Whiskers',
+                type: 'cat',
                 age: 3,
-                breed: 'labrador',
+                breed: 'siamese',
             },
             {
                 id: 2,
-                name: 'Fido',
-                type: 'dog',
-                age: 1,
-                breed: 'poodle',
+                name: 'Misty',
+                type: 'cat',
+                age: 2,
+                breed: 'persian',
             },
             {
                 id: 3,
@@ -34,46 +34,46 @@ describe('GET "/"', () => {
 })
 
 describe('GET "/:id"', () => {
-    test('GET "/:id" returns given pet', async () => {
-        const res = await requestWithSupertest.get('/pets/1')
+    test('GET "/:id" returns given cat', async () => {
+        const res = await requestWithSupertest.get('/cats/1')
         expect(res.status).toEqual(200)
         expect(res.type).toEqual(expect.stringContaining('json'))
         expect(res.body).toEqual(
             {
                 id: 1,
-                name: 'Rex',
-                type: 'dog',
+                name: 'Whiskers',
+                type: 'cat',
                 age: 3,
-                breed: 'labrador',
+                breed: 'siamese',
             }
         )
     })
 })
 
 describe('PUT "/:id"', () => {
-    test('PUT "/:id" updates pet and returns it', async () => {
-        const res = await requestWithSupertest.put('/pets/1').send({
+    test('PUT "/:id" updates cat and returns it', async () => {
+        const res = await requestWithSupertest.put('/cats/1').send({
             id: 1,
-            name: 'Rexo',
-            type: 'dogo',
+            name: 'Whiskerso',
+            type: 'cato',
             age: 4,
-            breed: 'doberman'
+            breed: 'Russian Blue'
         })
         expect(res.status).toEqual(200)
         expect(res.type).toEqual(expect.stringContaining('json'))
         expect(res.body).toEqual({
             id: 1,
-            name: 'Rexo',
-            type: 'dogo',
+            name: 'Whiskerso',
+            type: 'cato',
             age: 4,
-            breed: 'doberman'
+            breed: 'Russian Blue'
         })
     })
 })
 
 describe('POST "/"', () => {
-    test('POST "/" adds new pet and returns the added item', async () => {
-        const res = await requestWithSupertest.post('/pets').send({
+    test('POST "/" adds new cat and returns the added item', async () => {
+        const res = await requestWithSupertest.post('/cats').send({
             name: 'Salame',
             type: 'cat',
             age: 6,
@@ -92,17 +92,17 @@ describe('POST "/"', () => {
 })
 
 describe('DELETE "/:id"', () => {
-    test('DELETE "/:id" deletes given pet and returns updated list', async () => {
-        const res = await requestWithSupertest.delete('/pets/2')
+    test('DELETE "/:id" deletes given cat and returns updated list', async () => {
+        const res = await requestWithSupertest.delete('/cats/2')
         expect(res.status).toEqual(200)
         expect(res.type).toEqual(expect.stringContaining('json'))
         expect(res.body).toEqual([
             {
                 id: 1,
-                name: 'Rexo',
-                type: 'dogo',
+                name: 'Whiskerso',
+                type: 'cato',
                 age: 4,
-                breed: 'doberman'
+                breed: 'Russian Blue'
             },
             {
                 id: 3,

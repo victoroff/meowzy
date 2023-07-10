@@ -1,6 +1,6 @@
-import { getItem, listItems, editItem, addItem, deleteItem } from '../models/pets.models.js'
+import { getItem, listItems, editItem, addItem, deleteItem } from '../models/cats.models.js'
 
-export const getPet = (req, res) => {
+export const getCat = (req, res) => {
     try {
         const resp = getItem(parseInt(req.params.id))
         res.status(200).json(resp)
@@ -10,7 +10,7 @@ export const getPet = (req, res) => {
     }
 }
 
-export const listPets = (req, res) => {
+export const listCats = (req, res) => {
     try {
         const resp = listItems()
         res.status(200).json(resp)
@@ -20,7 +20,7 @@ export const listPets = (req, res) => {
     }
 }
 
-export const editPet = (req, res) => {
+export const editCat = (req, res) => {
     try {
         const resp = editItem(parseInt(req.params.id), req.body)
         res.status(200).json(resp)
@@ -30,7 +30,7 @@ export const editPet = (req, res) => {
     }
 }
 
-export const addPet = (req, res) => {
+export const addCat = (req, res) => {
     try {
         const resp = addItem(req.body)
         res.status(200).json(resp)
@@ -40,7 +40,7 @@ export const addPet = (req, res) => {
     }
 }
 
-export const deletePet = (req, res) => {
+export const deleteCat = (req, res) => {
     try {
         const resp = deleteItem(parseInt(req.params.id))
         res.status(200).json(resp)

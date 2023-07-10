@@ -1,5 +1,5 @@
 const db = {
-    pets: [
+    cats: [
         {
             id: 1,
             name: 'Whiskers',
@@ -13,14 +13,14 @@ const db = {
             type: 'cat',
             age: 2,
             breed: 'persian',
-        },
+        }, 
         {
             id: 3,
-            name: 'Luna',
+            name: 'Mittens',
             type: 'cat',
-            age: 1,
-            breed: 'maine coon',
-        },
+            age: 2,
+            breed: 'tabby',
+        }  
     ]
 }
 

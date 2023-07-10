@@ -1,11 +1,11 @@
 import express from "express";
 import {
-  listPets,
-  getPet,
-  editPet,
-  addPet,
-  deletePet,
-} from "../controllers/pets.controllers.js";
+  listCats,
+  getCat,
+  editCat,
+  addCat,
+  deleteCat,
+} from "../controllers/cats.controllers.js";
 
 const router = express.Router();
 
@@ -13,24 +13,24 @@ const router = express.Router();
  * @swagger
  * components:
  *  schemas:
- *     Pet:
+ *     cat:
  *      type: object
  *      properties:
  *          id:
  *              type: integer
- *              description: Pet id
+ *              description: cat id
  *          name:
  *              type: string
- *              description: Pet name
+ *              description: cat name
  *          age:
  *              type: integer
- *              description: Pet age
+ *              description: cat age
  *          type:
  *              type: string
- *              description: Pet type
+ *              description: cat type
  *          breed:
  *              type: string
- *              description: Pet breed
+ *              description: cat breed
  *     example:
  *          id: 1
  *          name: Rexaurus
@@ -41,58 +41,58 @@ const router = express.Router();
 
 /**
  * @swagger
- * /pets:
+ * /cats:
  *  get:
- *     summary: Get all pets
- *     description: Get all pets
+ *     summary: Get all cats
+ *     description: Get all cats
  *     responses:
  *      200:
  *         description: Success
  *      500:
  *         description: Internal Server Error
  */
-router.get("/", listPets);
+router.get("/", listCats);
 
 /**
  * @swagger
- * /pets/{id}:
+ * /cats/{id}:
  *  get:
- *     summary: Get pet detail
- *     description: Get pet detail
+ *     summary: Get cat detail
+ *     description: Get cat detail
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: integer
  *         required: true
- *         description: Pet id
+ *         description: cat id
  *     responses:
  *      200:
  *         description: Success
  *      500:
  *         description: Internal Server Error
  */
-router.get("/:id", getPet);
+router.get("/:id", getCat);
 
 /**
  * @swagger
- * /pets/{id}:
+ * /cats/{id}:
  *  put:
- *     summary: Edit pet
- *     description: Edit pet
+ *     summary: Edit cat
+ *     description: Edit cat
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: integer
  *         required: true
- *         description: Pet id
+ *         description: cat id
  *     requestBody:
- *       description: A JSON object containing pet information
+ *       description: A JSON object containing cat information
  *       content:
  *         application/json:
  *           schema:
- *              $ref: '#/components/schemas/Pet'
+ *              $ref: '#/components/schemas/cat'
  *           example:
  *              name: Rexaurus
  *              age: 12
@@ -105,54 +105,52 @@ router.get("/:id", getPet);
  *       description: Internal Server Error
  *
  */
-router.put("/:id", editPet);
+router.put("/:id", editCat);
 
 /**
  * @swagger
- * /pets:
+ * /cats:
  *  post:
- *      summary: Add pet
- *      description: Add pet
+ *      summary: Add cat
+ *      description: Add cat
  *      requestBody:
- *          description: A JSON object containing pet information
+ *          description: A JSON object containing cat information
  *          content:
  *             application/json:
  *                 schema:
- *                    $ref: '#/components/schemas/Pet'
+ *                    $ref: '#/components/schemas/cat'
  *                 example:
- *                    name: Rexaurus
- *                    age: 12
- *                    breed: labrador
- *                    type: dog
+ *                    name: Pustinqk
+ *                    age: 7
+ *                    breed: ulichna prevuzhodna
+ *                    type: cat
  *      responses:
  *      200:
  *          description: Success
  *      500:
  *          description: Internal Server Error
  */
-
-router.post("/", addPet);
-
+router.post("/", addCat);
 
 /**
  * @swagger
- * /pets/{id}:
+ * /cats/{id}:
  *  delete:
- *     summary: Delete pet
- *     description: Delete pet
+ *     summary: Delete cat
+ *     description: Delete cat
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: integer
  *         required: true
- *         description: Pet id
+ *         description: cat id
  *     responses:
  *     200:
  *        description: Success
  *     500:
  *       description: Internal Server Error
  */
-router.delete("/:id", deletePet);
+router.delete("/:id", deleteCat);
 
 export default router;

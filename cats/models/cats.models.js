@@ -2,8 +2,8 @@ import db from '../../db/db.js'
 
 export const getItem = id => {
     try {
-        const pet = db?.pets?.filter(pet => pet?.id === id)[0]
-        return pet
+        const cat = db?.cats?.filter(cat => cat?.id === id)[0]
+        return cat
     } catch (err) {
         console.log('Error', err)
     }
@@ -11,7 +11,7 @@ export const getItem = id => {
 
 export const listItems = () => {
     try {
-        return db?.pets
+        return db?.cats
     } catch (err) {
         console.log('Error', err)
     }
@@ -19,12 +19,12 @@ export const listItems = () => {
 
 export const editItem = (id, data) => {
     try {
-        const index = db.pets.findIndex(pet => pet.id === id)
+        const index = db.cats.findIndex(cat => cat.id === id)
 
-        if (index === -1) throw new Error('Pet not found')
+        if (index === -1) throw new Error('cat not found')
         else {
-            db.pets[index] = data
-            return db.pets[index]
+            db.cats[index] = data
+            return db.cats[index]
         }        
     } catch (err) {
         console.log('Error', err)
@@ -33,9 +33,9 @@ export const editItem = (id, data) => {
 
 export const addItem = data => {
     try {  
-        const newPet = { id: db.pets.length + 1, ...data }
-        db.pets.push(newPet)
-        return newPet
+        const newcat = { id: db.cats.length + 1, ...data }
+        db.cats.push(newcat)
+        return newcat
 
     } catch (err) {
         console.log('Error', err)
@@ -45,12 +45,12 @@ export const addItem = data => {
 export const deleteItem = id => {
     try {
         // delete item from db
-        const index = db.pets.findIndex(pet => pet.id === id)
+        const index = db.cats.findIndex(cat => cat.id === id)
 
-        if (index === -1) throw new Error('Pet not found')
+        if (index === -1) throw new Error('cat not found')
         else {
-            db.pets.splice(index, 1)
-            return db.pets
+            db.cats.splice(index, 1)
+            return db.cats
         }
     } catch (error) {
         

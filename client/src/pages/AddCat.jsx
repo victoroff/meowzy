@@ -1,29 +1,29 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { url , port } from '../../../../srv/app'
-function AddPet() {
+import {url, port} from '../../../app'
+function Addcat() {
 
-    const [petName, setPetName] = useState()
-    const [petType, setPetType] = useState()
-    const [petAge, setPetAge] = useState()
-    const [petBreed, setPetBreed] = useState()
+    const [catName, setcatName] = useState()
+    const [catType, setcatType] = useState()
+    const [catAge, setcatAge] = useState()
+    const [catBreed, setcatBreed] = useState()
 
-    const addPet = async () => {
+    const addcat = async () => {
         try {
-            const petData = {
-                name: petName,
-                type: petType,
-                age: petAge,
-                breed: petBreed
+            const catData = {
+                name: catName,
+                type: catType,
+                age: catAge,
+                breed: catBreed
             }
 
             /* FETCH */
-            // const response = await fetch('http://localhost:3000/pets/', {
+            // const response = await fetch('http://localhost:3000/cats/', {
             //     method: 'POST',
             //     headers: {
             //         'Content-Type': 'application/json'
             //     },
-            //     body: JSON.stringify(petData)
+            //     body: JSON.stringify(catData)
             // })
 
             // if (response.status === 200) {
@@ -33,8 +33,8 @@ function AddPet() {
 
             /* AXIOS */
             const response = await axios.post(
-                `${url}:${port}/pets/`,
-                petData,
+                `${url}:${port}/cats/`,
+                catData,
                 { headers: { 'Content-Type': 'application/json' } }
             )
                 
@@ -47,36 +47,36 @@ function AddPet() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', aligniItems: 'center' }}>
-            <h2>Add Pet</h2>
+            <h2>Add cat</h2>
             
             <div style={{ display: 'flex', flexDirection: 'column', margin: 20 }}>
-                <label>Pet name</label>
-                <input type='text' value={petName} onChange={e => setPetName(e.target.value)} />
+                <label>cat name</label>
+                <input type='text' value={catName} onChange={e => setcatName(e.target.value)} />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', margin: 20 }}>
-                <label>Pet type</label>
-                <input type='text' value={petType} onChange={e => setPetType(e.target.value)} />
+                <label>cat type</label>
+                <input type='text' value={catType} onChange={e => setcatType(e.target.value)} />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', margin: 20 }}>
-                <label>Pet age</label>
-                <input type='text' value={petAge} onChange={e => setPetAge(e.target.value)} />
+                <label>cat age</label>
+                <input type='text' value={catAge} onChange={e => setcatAge(e.target.value)} />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', margin: 20 }}>
-                <label>Pet breed</label>
-                <input type='text' value={petBreed} onChange={e => setPetBreed(e.target.value)} />
+                <label>cat breed</label>
+                <input type='text' value={catBreed} onChange={e => setcatBreed(e.target.value)} />
             </div>
 
             <button
                 style={{ marginTop: 30 }}
-                onClick={() => addPet()}
+                onClick={() => addcat()}
             >
-                Add pet
+                Add cat
             </button>
         </div>
     )
 }
 
-export default AddPet
+export default Addcat

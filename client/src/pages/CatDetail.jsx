@@ -1,29 +1,29 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { url, port } from '../../../../srv/app'
 import axios from 'axios'
+import {url, port} from '../../../app'
 
-function PetDetail({ setPetToEdit }) {
+function catDetail({ setcatToEdit }) {
 
-    const [pet, setPet] = useState([])
+    const [cat, setcat] = useState([])
 
-    const { petId } = useParams()
+    const { catId } = useParams()
 
-    const getPet = async () => {
+    const getcat = async () => {
         try {
             /* FETCH */
-            // const response = await fetch(`http://localhost:3000/pets/${petId}`)
+            // const response = await fetch(`http://localhost:3000/cats/${catId}`)
             // const data = await response.json()
             // if (response.status === 200) {
-            //     setPet(data)
-            //     setPetToEdit(data)
+            //     setcat(data)
+            //     setcatToEdit(data)
             // }
 
             /* AXIOS */
-            const response = await axios.get(`${url}:${port}/pets/${petId}`)
+            const response = await axios.get(`${url}:${port}/cats/${catId}`)
             if (response.status === 200) {
-                setPet(response.data)
-                setPetToEdit(response.data)
+                setcat(response.data)
+                setcatToEdit(response.data)
             }
             
         } catch (error) {
@@ -31,17 +31,17 @@ function PetDetail({ setPetToEdit }) {
         }
     }
   
-    useEffect(() => { getPet() }, [])
+    useEffect(() => { getcat() }, [])
 
-    const deletePet = async () => {
+    const deletecat = async () => {
         try {
             /* FETCH */
-            // const response = await fetch(`http://localhost:3000/pets/${petId}`, {
+            // const response = await fetch(`http://localhost:3000/cats/${catId}`, {
             //     method: 'DELETE'
             // })
             
             /* AXIOS */
-            const response = await axios.delete(`${url}:${port}/pets/${petId}`)
+            const response = await axios.delete(`${url}:${port}/cats/${catId}`)
 
             if (response.status === 200) window.location.href = '/'
         } catch (error) {
@@ -51,26 +51,26 @@ function PetDetail({ setPetToEdit }) {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', aligniItems: 'center' }}>
-            <h2>Pet Detail</h2>
+            <h2>cat Detail</h2>
 
-            {pet && (
+            {cat && (
                 <>
-                    <p>Pet name: {pet.name}</p>
-                    <p>Pet type: {pet.type}</p>
-                    <p>Pet age: {pet.age}</p>
-                    <p>Pet breed: {pet.breed}</p>
+                    <p>cat name: {cat.name}</p>
+                    <p>cat type: {cat.type}</p>
+                    <p>cat age: {cat.age}</p>
+                    <p>cat breed: {cat.breed}</p>
 
                     <div style={{ display: 'flex', justifyContent: 'center', aligniItems: 'center' }}>
                         
-                        <Link to={`/${pet?.id}/edit`}>
-                            <button style={{ marginRight: 10 }}>Edit pet</button>
+                        <Link to={`/${cat?.id}/edit`}>
+                            <button style={{ marginRight: 10 }}>Edit cat</button>
                         </Link>
 
                         <button
                             style={{ marginLeft: 10 }}
-                            onClick={() => deletePet()}
+                            onClick={() => deletecat()}
                         >
-                            Delete pet
+                            Delete cat
                         </button>
                     </div>
                 </>
@@ -79,4 +79,4 @@ function PetDetail({ setPetToEdit }) {
     )
 }
 
-export default PetDetail
+export default catDetail
